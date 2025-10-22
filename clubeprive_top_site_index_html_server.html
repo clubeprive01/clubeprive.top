@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clube Privé — clubeprive.top</title>
+  <meta name="description" content="Clube Privé — Comunidade confidencial por assinatura. Área de perfis para maiores, grupos privados e conteúdo exclusivo.">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    :root{--pink:#ff4da6;--purple:#6b2cff;--white:#ffffff;--black:#0b0b0f;--muted:rgba(255,255,255,0.08);--glass: rgba(255,255,255,0.04);--radius:14px;--container:1200px;font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--black) 0%, #0f0420 70%);color:var(--white)}
+    .container{max-width:var(--container);margin:0 auto;padding:22px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--pink),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--white);font-size:18px}
+    nav{display:flex;gap:12px}
+    nav a{color:var(--white);text-decoration:none;font-weight:600;padding:8px;border-radius:8px}
+    nav a:hover{background:var(--muted)}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);backdrop-filter:blur(6px);box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+    .btn{background:linear-gradient(90deg,var(--pink),var(--purple));border:none;padding:10px 14px;border-radius:10px;color:var(--white);cursor:pointer;font-weight:800}
+    .btn.secondary{background:transparent;border:2px solid rgba(255,255,255,0.06)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .profile-card{padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);display:flex;flex-direction:column;gap:8px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--pink),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:800}
+    form input, form textarea, .modal input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);margin-bottom:8px}
+    .small{font-size:13px;opacity:0.9}
+    .profiles-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .badge{background:linear-gradient(90deg,var(--pink),var(--purple));padding:6px 8px;border-radius:999px;font-weight:800}
+    .notice{font-size:13px;opacity:0.9}
+    .flex{display:flex;gap:10px;align-items:center}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.profiles-list{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}.profiles-list .profile-card{flex-direction:row;align-items:center}.profile-card .avatar{width:64px;height:64px}.video-embed iframe{height:160px}}
+    @media(max-width:520px){.profiles-list{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.nav{flex-wrap:wrap}}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,2,2,0.6);z-index:60}
+    .modal.show{display:flex}.modal .box{width:100%;max-width:720px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#0b0810,#140b19)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand"><div class="logo">CP</div><div><h1 style="margin:0">Clube Privé</h1><div style="opacity:0.85;font-size:13px">clubeprive.top — Área Reservada • 18+</div></div></div>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#perfis">Perfis</a>
+        <a href="#grupos">Grupos</a>
+        <a href="#planos">Planos</a>
+        <a href="#provas">Provas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h2>Rede Privada para Maiores — Perfis e Comunidades</h2>
+          <p class="small">Espaço moderado para publicação de perfis, troca de mensagens privadas e participação em grupos exclusivos. Todas as interações são para maiores de 18 anos e seguem políticas estritas de uso.</p>
+          <div style="margin-top:10px" class="flex">
+            <button class="btn" onclick="openCreateProfile()">Criar Perfil</button>
+            <button class="btn secondary" onclick="openRules()">Regras e Moderação</button>
+          </div>
+
+          <h3 style="margin-top:18px">Destaques</h3>
+          <div class="grid-3" style="margin-top:8px">
+            <div class="card small"><div class="badge">+2.3k</div><div style="margin-top:8px">Membros verificados</div></div>
+            <div class="card small"><div class="badge">15min</div><div style="margin-top:8px">Suporte médio</div></div>
+            <div class="card small"><div class="badge">100%</div><div style="margin-top:8px">Moderação ativa</div></div>
+          </div>
+
+          <div style="margin-top:14px">
+            <h4 class="small">Observação</h4>
+            <p class="notice">Este espaço não permite oferta ou negociação de serviços sexuais. Os perfis são para interação, networking e conteúdo para maiores. Qualquer violação será removida e poderá resultar em banimento.</p>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 id="planos">Planos & Acesso</h3>
+          <div class="small">Assinaturas desbloqueiam recursos: marcar perfil como destaque, mensagens prioritárias e links diretos para grupos privados.</div>
+          <div style="margin-top:12px" class="plans">
+            <div class="plan"><h4>Basic</h4><div class="price">R$ 9,90</div><div class="small">Perfil básico • Mensagens</div><div style="margin-top:8px"><button class="btn" onclick="startCheckout('basic')">Assinar</button></div></div>
+            <div class="plan"><h4>Premium</h4><div class="price">R$ 39,90</div><div class="small">Perfil em destaque • Prioridade</div><div style="margin-top:8px"><button class="btn" onclick="startCheckout('premium')">Assinar</button></div></div>
+          </div>
+          <div style="margin-top:12px" class="small">Pagamento seguro via PushinPay — PIX e cartão. Após confirmação, recursos são liberados automaticamente.</div>
+        </aside>
+      </section>
+
+      <!-- Perfis -->
+      <section class="card" id="perfis">
+        <h3>Perfis (Somente maiores de 18 anos)</h3>
+        <p class="small">Crie um perfil público e permita que outros membros enviem mensagens privadas. Perfis passam por moderação automática e manual. Não publicize serviços ou preços.</p>
+
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" onclick="openCreateProfile()">Criar Perfil</button>
+          <button class="btn secondary" onclick="filterProfiles('all')">Ver Todos</button>
+          <button class="btn secondary" onclick="filterProfiles('featured')">Destaques</button>
+        </div>
+
+        <div style="margin-top:14px" class="profiles-list" id="profilesList">
+          <!-- Perfis carregados por JS -->
+        </div>
+      </section>
+
+      <!-- Grupos -->
+      <section class="card" id="grupos">
+        <h3>Grupos Privados</h3>
+        <div class="grid-3">
+          <div class="group-card"><h4>Telegram • Comunidade</h4><div class="small">Notícias, lançamentos e convites</div><div style="margin-top:8px" class="flex"><button class="btn secondary" onclick="copyLink('#')">Copiar</button></div></div>
+          <div class="group-card"><h4>WhatsApp • Salas</h4><div class="small">Grupos segmentados</div><div style="margin-top:8px" class="flex"><button class="btn secondary" onclick="copyLink('#')">Copiar</button></div></div>
+          <div class="group-card"><h4>Fred • Canal VIP</h4><div class="small">Conteúdo premium</div><div style="margin-top:8px" class="flex"><button class="btn secondary" onclick="copyLink('#')">Copiar</button></div></div>
+        </div>
+      </section>
+
+      <!-- Provas sociais -->
+      <section class="card" id="provas">
+        <h3>Provas Sociais</h3>
+        <div class="test-grid">
+          <div class="testimonial"><div class="stars">★★★★★</div><p class="small">"Excelente moderação e comunidade respeitosa."</p><div class="small">— Lúcia</div></div>
+          <div class="testimonial"><div class="stars">★★★★★</div><p class="small">"Perfis de qualidade e suporte rápido."</p><div class="small">— Felipe</div></div>
+          <div class="testimonial"><div class="stars">★★★★★</div><p class="small">"Recomendo para quem busca comunidade segura."</p><div class="small">— Marina</div></div>
+        </div>
+      </section>
+
+      <!-- Vídeos e fontes -->
+      <section class="card" id="videos">
+        <h3>Vídeos & Conteúdo</h3>
+        <p class="small">Insira teasers, apresentações e vídeos institucionais. Use YouTube, Vimeo ou hospedagem própria.</p>
+        <div class="video-grid" id="videoGrid">
+          <div class="video-embed"><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Vídeo 1" frameborder="0" allowfullscreen></iframe></div>
+          <div class="video-embed"><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Vídeo 2" frameborder="0" allowfullscreen></iframe></div>
+          <div class="video-embed"><iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Vídeo 3" frameborder="0" allowfullscreen></iframe></div>
+        </div>
+      </section>
+
+      <!-- FAQ e Regras -->
+      <section class="card faq" id="faq">
+        <h3>Perguntas Frequentes & Regras</h3>
+        <div class="faq-item"><strong>Quem pode criar perfil?</strong><p class="small">Somente maiores de 18 anos. Será solicitado documento para verificação em casos selecionados.</p></div>
+        <div class="faq-item"><strong>O que é proibido?</strong><p class="small">Anúncios de serviços, venda de conteúdo explícito pago, ódio, assédio, trocas de contato para fins ilegais. Violações resultam em exclusão imediata.</p></div>
+        <div class="faq-item"><strong>Como denunciar?</strong><p class="small">Use o botão "Denunciar" no perfil ou envie e-mail para suporte. Toda denúncia é analisada.</p></div>
+      </section>
+
+      <!-- Contato -->
+      <section class="card" id="contato">
+        <h3>Contato & Suporte</h3>
+        <div class="small">Suporte por e-mail e Telegram. Resposta média: 15 minutos (em horário comercial).</div>
+        <div style="margin-top:10px" class="flex"><a class="btn" href="mailto:contato@clubeprive.top">contato@clubeprive.top</a><button class="btn secondary" onclick="copyLink('#')">Suporte Telegram</button></div>
+      </section>
+
+    </main>
+
+    <footer style="margin-top:20px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.03)"><div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap"><div><strong>Clube Privé</strong><div style="opacity:0.85">clubeprive.top</div></div><div style="opacity:0.9">Política de Privacidade • Termos de Uso • Suporte: contato@clubeprive.top</div></div></footer>
+  </div>
+
+  <!-- Modais: criar perfil, regras, checkout -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="box">
+      <div id="modalContent"></div>
+      <div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btn secondary" onclick="closeModal()">Fechar</button></div>
+    </div>
+  </div>
+
+  <script>
+    // Simple client-side profile system (demo). Stores profiles in localStorage.
+    const STORAGE_KEY = 'cp_profiles_v1';
+
+    function uid(){return 'id_' + Math.random().toString(36).slice(2,9)}
+    function getProfiles(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){return []}}
+    function saveProfiles(list){localStorage.setItem(STORAGE_KEY, JSON.stringify(list))}
+
+    function openCreateProfile(){
+      const html = `
+        <h3>Criar Perfil</h3>
+        <p class="small">Apenas maiores de 18 anos. Não publique conteúdo ou ofertas proibidas.</p>
+        <form id="createProfileForm">
+          <input name="name" placeholder="Nome (apelido)" required>
+          <input name="location" placeholder="Cidade / Estado" required>
+          <input name="age" placeholder="Idade" required>
+          <textarea name="bio" placeholder="Descrição curta (até 300 caracteres)"></textarea>
+          <input name="avatar" placeholder="URL da imagem do avatar (opcional)">
+          <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" type="submit">Salvar</button></div>
+        </form>
+      `;
+      showModal(html);
+      document.getElementById('createProfileForm').addEventListener('submit', function(e){
+        e.preventDefault();const f=new FormData(e.target);const name=f.get('name');const age=parseInt(f.get('age')||0,10);
+        if(age<18){alert('Apenas maiores de 18 anos podem criar perfil.');return}
+        const profile={id:uid(),name,location:f.get('location'),age,bio:f.get('bio'),avatar:f.get('avatar'),featured:false,created:Date.now()}
+        const list=getProfiles();list.unshift(profile);saveProfiles(list);renderProfiles();closeModal();alert('Perfil criado — aguardando moderação.')
+      })
+    }
+
+    function showModal(html){document.getElementById('modalContent').innerHTML=html;document.getElementById('modal').classList.add('show')}
+    function closeModal(){document.getElementById('modal').classList.remove('show')}
+
+    function renderProfiles(filter='all'){
+      const container=document.getElementById('profilesList');container.innerHTML='';const list=getProfiles();
+      let filtered=list;
+      if(filter==='featured') filtered=list.filter(p=>p.featured)
+      filtered.forEach(p=>{
+        const div=document.createElement('div');div.className='profile-card';
+        div.innerHTML=`
+          <div class="avatar">${p.avatar?'<img src="'+p.avatar+'" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:10px">':p.name.charAt(0).toUpperCase()}</div>
+          <div style="text-align:center"><strong>${escapeHtml(p.name)}</strong><div class="small">${escapeHtml(p.location)} • ${p.age} anos</div><div class="small" style="margin-top:6px">${escapeHtml(p.bio || '')}</div><div style="margin-top:8px;display:flex;gap:8px;justify-content:center"><button class="btn secondary" onclick="openProfile('${p.id}')">Ver Perfil</button>${p.featured?'<div class="badge">Destaque</div>':''}</div></div>`;
+        container.appendChild(div);
+      })
+    }
+
+    function escapeHtml(s){if(!s) return '';return s.replace(/[&<>"'`]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[c]})}
+
+    function openProfile(id){const p=getProfiles().find(x=>x.id===id);if(!p){alert('Perfil não encontrado');return}
+      const html=`
+        <h3>${escapeHtml(p.name)} ${p.featured?'<span class="badge">Destaque</span>':''}</h3>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+          <div style="width:120px;height:120px;border-radius:12px;background:linear-gradient(135deg,var(--pink),var(--purple))">${p.avatar?'<img src="'+p.avatar+'" style="width:120px;height:120px;object-fit:cover;border-radius:12px">':p.name.charAt(0).toUpperCase()}</div>
+          <div>
+            <div class="small">${escapeHtml(p.location)} • ${p.age} anos</div>
+            <p class="small" style="margin-top:8px">${escapeHtml(p.bio)}</p>
+            <div style="display:flex;gap:8px;margin-top:10px"><button class="btn" onclick="openMessage('${p.id}')">Enviar Mensagem</button><button class="btn secondary" onclick="reportProfile('${p.id}')">Denunciar</button></div>
+          </div>
+        </div>
+      `; showModal(html)}
+
+    // Messaging (demo, stored in localStorage)
+    function openMessage(profileId){
+      const html=`
+        <h3>Mensagem privada</h3>
+        <form id="msgForm">
+          <input name="from" placeholder="Seu nome" required>
+          <textarea name="message" placeholder="Escreva sua mensagem (respeite as regras)" required></textarea>
+          <div style="display:flex;justify-content:flex-end;gap:8px"><button class="btn" type="submit">Enviar</button></div>
+        </form>
+      `; showModal(html); document.getElementById('msgForm').addEventListener('submit',function(e){e.preventDefault();const f=new FormData(e.target);const from=f.get('from');const message=f.get('message');if(!from||!message){alert('Preencha os campos');return}const key='cp_msgs_'+profileId;const arr=JSON.parse(localStorage.getItem(key)||'[]');arr.push({id:uid(),from,message,ts:Date.now()});localStorage.setItem(key,JSON.stringify(arr));closeModal();alert('Mensagem enviada — o titular do perfil verá no painel (simulado).')})
+    }
+
+    function reportProfile(id){if(!confirm('Deseja realmente denunciar este perfil?')) return;const reports=JSON.parse(localStorage.getItem('cp_reports')||'[]');reports.push({id,ts:Date.now()});localStorage.setItem('cp_reports',JSON.stringify(reports));alert('Denúncia enviada. A equipe analisará o caso.')}
+
+    function filterProfiles(mode){renderProfiles(mode)}
+
+    // Simple checkout demo: flags featured -> in real use, call backend PushinPay
+    function startCheckout(plan){
+      const buyerName = prompt('Seu nome (apenas para emissão):','Cliente Privé')||'Cliente';
+      const buyerEmail = prompt('Seu e-mail (receberá instruções):','')||'';
+      const amount = plan==='basic'?9.90:(plan==='premium'?39.90:19.90);
+      if(!confirm(`Confirmar pagamento de R$ ${amount.toFixed(2)} para o plano ${plan}?`)) return;
+      // Simula retorno do gateway: marca último perfil criado como destacado (apenas demo)
+      const list=getProfiles(); if(list.length===0){alert('Crie um perfil antes de comprar.');return}
+      const profile=list[0]; profile.featured=true; saveProfiles(list); renderProfiles(); alert('Pagamento simulado realizado. Perfil marcado como destaque.')
+    }
+
+    function openRules(){
+      const html=`<h3>Regras e Moderação</h3>
+        <ol class="small"><li>Somente maiores de 18 anos.</li><li>Proibido anúncios de serviços ou negociações.</li><li>Proibido conteúdo explícito e ilegal.</li><li>Respeito entre membros — assédio resulta em ban.</li><li>Qualquer denúncia será investigada.</li></ol>
+      `; showModal(html)
+    }
+
+    function copyLink(url){navigator.clipboard.writeText(url).then(()=>alert('Link copiado')).catch(()=>alert('Não foi possível copiar.'))}
+
+    // init demo
+    document.addEventListener('DOMContentLoaded', ()=>{ if(!localStorage.getItem(STORAGE_KEY)){ const seed=[{id:uid(),name:'Maya',location:'SP',age:25,bio:'Perfil de exemplo — curta e elegante.',featured:true,avatar:'',created:Date.now()},{id:uid(),name:'Luna',location:'RJ',age:27,bio:'Curto passeios e conversas',featured:false,avatar:'',created:Date.now()}]; saveProfiles(seed)} renderProfiles(); })
+  </script>
+</body>
+</html>
